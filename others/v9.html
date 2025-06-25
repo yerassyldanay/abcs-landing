@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персональная книга-раскраска | Цветные Истории</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles inspired by sonnet.html -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 10px 24px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background-color: #4a6fdc;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #3a5dc0;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: #f8f9fa;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        .btn-secondary:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Section Title Styles */
+        .section-title {
+            color: #14365d;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #4a6fdc;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* Book Card Styles */
+        .book-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .book-card-details { padding: 15px; }
+        .book-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #14365d;
+            margin-bottom: 5px;
+            min-height: 56px; /* 2 lines of text */
+        }
+        .book-card-description {
+            font-size: 0.9rem;
+            color: #555;
+            min-height: 54px; /* 3 lines of text */
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center; padding: 1rem;
+        }
+        .modal-content {
+            position: relative; background-color: #fefefe; margin: auto; padding: 2rem; border-radius: 12px; max-width: 90%; max-height: 90vh; display: flex; flex-direction: column; align-items: center; overflow-y: auto;
+        }
+        .close-button {
+            position: absolute; top: 15px; right: 25px; color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer;
+        }
+        
+        /* Product Detail Page Styles */
+        .thumbnail.active {
+            border-color: #4a6fdc;
+        }
+        .product-meta {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        .meta-item:last-child { margin-bottom: 0; }
+        .meta-icon {
+            width: 20px; height: 20px;
+            margin-right: 10px;
+            color: #4a6fdc;
+            font-weight: bold;
+        }
+        #photo-preview {
+            width: 100px; height: 100px; border-radius: 50%; background-size: cover; background-position: center; background-color: #e9ecef; border: 2px dashed #ced4da;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 shadow-md">
+        <div class="container flex justify-between items-center py-4">
+            <a href="#" id="home-link" class="text-2xl font-bold text-[#4a6fdc]">Цветные Истории</a>
+            <div id="main-nav" class="hidden md:flex items-center space-x-6 text-base">
+                <a href="#series-emotions" class="text-gray-700 hover:text-[#4a6fdc] transition-colors font-medium">Эмоции</a>
+                <a href="#series-basic" class="text-gray-700 hover:text-[#4a6fdc] transition-colors font-medium">Основы</a>
+                <a href="#how-it-works" class="text-gray-700 hover:text-[#4a6fdc] transition-colors font-medium">Как это работает</a>
+            </div>
+            <a href="#" class="btn btn-primary order-btn">Заказать</a>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <main class="py-20 md:py-28 text-center bg-[#f8f9fa]">
+            <div class="container">
+                <h1 class="text-4xl md:text-5xl font-bold text-[#14365d] leading-tight">
+                    Персональная книга-раскраска с обучающим элементом
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                    Подарите ребенку уникальное приключение, где он станет главным героем собственной истории!
+                </p>
+                <div class="mt-8">
+                    <a href="#series-emotions" class="btn btn-secondary text-lg">Посмотреть книги</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Series "Emotions" -->
+        <section id="series-emotions" class="py-16 md:py-24">
+            <div class="container">
+                <h2 class="section-title">Серия "Эмоции"</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <!-- Book Cards are generated by JS now -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Series "Basic" -->
+        <section id="series-basic" class="py-16 md:py-24 bg-[#f8f9fa]">
+            <div class="container">
+                <h2 class="section-title">Серия "Основы"</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                   <!-- Book Cards are generated by JS now -->
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-16 md:py-24">
+            <div class="container">
+                <h2 class="section-title">Из вашего фото — в сказку!</h2>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mt-12">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-700">1. Ваше фото</h3>
+                        <img src="bck_removed_1.png" alt="Пример оригинальной фотографии" class="rounded-xl max-w-xs w-full h-auto shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/400x565/dddddd/333333?text=Original+Photo';">
+                    </div>
+                    <div class="text-4xl font-bold text-[#4a6fdc] transform rotate-90 md:rotate-0">&rarr;</div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-700">2. Герой книги</h3>
+                        <img src="bck_removed_2.png" alt="Пример сгенерированного персонажа" class="rounded-xl max-w-xs w-full h-auto shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/400x565/dddddd/333333?text=Book+Character';">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="bg-[#f8f9fa] border-t border-gray-200">
+            <div class="container py-8 flex flex-wrap justify-between items-center gap-6">
+                <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">
+                    <a href="#" class="hover:text-[#4a6fdc]">Положения и условия</a>
+                    <a href="#" class="hover:text-[#4a6fdc]">Политика конфиденциальности</a>
+                    <a href="#" class="hover:text-[#4a6fdc]">О нас</a>
+                </div>
+                <div class="text-sm text-gray-500">
+                    &copy; 2025 Цветные Истории. Все права защищены.
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- PRODUCT DETAIL PAGE (HIDDEN BY DEFAULT) -->
+    <div id="product-detail-page" class="hidden">
+       <section class="container py-8 md:py-12">
+            <div class="mb-6 text-sm">
+                <a href="#" id="back-to-main" class="text-gray-600 hover:text-[#4a6fdc] transition-colors">&larr; Назад ко всем книгам</a>
+            </div>
+            <div class="flex flex-col md:flex-row gap-8 md:gap-12">
+                <!-- Left: Gallery -->
+                <div class="w-full md:w-1/2 lg:w-2/5">
+                    <img id="detail-main-photo" src="" alt="Главное изображение книги" class="w-full h-auto object-contain rounded-lg shadow-lg border-2 border-gray-100 mb-4">
+                    <div id="detail-thumbnail-container" class="flex gap-3 overflow-x-auto pb-2">
+                        <!-- Thumbnails will be injected here -->
+                    </div>
+                </div>
+                <!-- Right: Info -->
+                <div class="w-full md:w-1/2 lg:w-3/5">
+                    <h1 id="detail-title" class="text-4xl md:text-5xl font-bold text-[#14365d]"></h1>
+                    <p id="detail-description" class="mt-4 text-base text-gray-600"></p>
+                    
+                    <div class="product-meta">
+                         <div class="meta-item">
+                            <span class="meta-icon">✓</span>
+                            <span>Персонализация по имени и фото ребенка</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">✓</span>
+                            <span>Развивает воображение и эмоциональный интеллект</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">✓</span>
+                            <span>Подходит для детей от 3 до 8 лет</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-icon">✓</span>
+                            <span>Высококачественная бумага для раскрашивания</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <button id="detail-order-btn" class="btn btn-primary text-lg">
+                            Оформить заказ на эту книгу
+                        </button>
+                    </div>
+                </div>
+            </div>
+       </section>
+       <!-- Recommendations Section -->
+       <section id="recommendations" class="pt-16 md:pt-24 pb-8">
+           <div class="container">
+                <h2 class="section-title !text-2xl md:!text-3xl">Другие книги из этой серии</h2>
+                <div id="recommendations-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Recommended books will be injected here -->
+                </div>
+           </div>
+       </section>
+    </div>
+
+
+    <!-- Main Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content max-w-2xl w-full">
+            <span class="close-button order-modal-close">&times;</span>
+            <h3 class="text-3xl font-bold mb-6 text-center text-[#14365d]">Оформление заказа</h3>
+            <form id="order-form" class="w-full text-base">
+                <fieldset class="mb-6">
+                    <legend class="text-xl font-semibold mb-4 w-full border-b pb-2 text-gray-700">1. О герое книги</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                        <div class="flex flex-col gap-4">
+                             <input type="text" name="child_name" placeholder="Имя ребенка" required class="w-full px-4 py-2 border rounded-lg focus:ring-[#4a6fdc] focus:border-[#4a6fdc]">
+                             <input type="number" name="child_age" placeholder="Возраст (лет)" min="1" max="12" required class="w-full px-4 py-2 border rounded-lg focus:ring-[#4a6fdc] focus:border-[#4a6fdc]">
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <div id="photo-preview"></div>
+                            <label for="child_photo" class="btn btn-secondary !text-sm !py-2 w-full text-center">
+                                Загрузить фото
+                            </label>
+                            <input type="file" name="child_photo" id="child_photo" class="hidden" accept="image/png, image/jpeg">
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <fieldset class="mb-6">
+                    <legend class="text-xl font-semibold mb-4 w-full border-b pb-2 text-gray-700">2. Выберите книги</legend>
+                    <div id="book-selection-list" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                        <!-- Checkboxes will be dynamically inserted here -->
+                    </div>
+                </fieldset>
+
+                 <fieldset class="mb-6">
+                    <legend class="text-xl font-semibold mb-4 w-full border-b pb-2 text-gray-700">3. Для связи с вами</legend>
+                     <input type="tel" name="phone_number" placeholder="Ваш номер телефона" required class="w-full px-4 py-2 border rounded-lg focus:ring-[#4a6fdc] focus:border-[#4a6fdc]">
+                </fieldset>
+
+                <button type="submit" class="btn btn-primary w-full text-lg">
+                    Отправить заказ
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        
+        // --- DATA ---
+        const BOOKS_DATA = {
+            "Эмоции": [
+                { id: "emotion-1", title: "Гнев: Тигр Внутри", emoji: "🐅", short_desc: "Гнев можно охладить и направить на добрые поступки.", pages: "book_emotions_first_1.jpg,book_emotions_first_2.jpg,book_emotions_end.jpg", full_desc: "Эта история учит малыша, что чувствовать гнев — это нормально. Вместе с главной героиней он узнает, как превратить горячие и разрушительные порывы в созидательную энергию, находя выход своим эмоциям в творчестве и добрых делах." },
+                { id: "emotion-2", title: "Грусть: Слёзы Слона", emoji: "🐘", short_desc: "Печаль может стать началом чего-то нового.", pages: "book_emotions_second_1.jpg,book_emotions_second_2.jpg,book_emotions_end.jpg", full_desc: "Книга нежно объясняет, что грусть — это важное чувство, которое не нужно прятать. Через метафору слёз, из которых вырастают цветы, ребенок понимает, что даже из печальных моментов может родиться что-то прекрасное и новое." },
+                { id: "emotion-3", title: "Радость: Шумная Обезьянка", emoji: "🐒", short_desc: "Радость становится ярче, когда её делишь с друзьями.", pages: "book_emotions_third_1.jpg,book_emotions_third_2.jpg,book_emotions_end.jpg", full_desc: "Это весёлое приключение о том, как важно делиться своей радостью с окружающими. История показывает, что когда мы дарим счастье другим, наше собственное счастье становится только больше и ярче." },
+                { id: "emotion-4", title: "Страх: Шёпот в Тени", emoji: "🦉", short_desc: "Страх уменьшается, когда к нему идёшь навстречу.", pages: "book_emotions_fourth_1.jpg,book_emotions_fourth_2.jpg,book_emotions_end.jpg", full_desc: "Книга помогает детям справиться со страхами, показывая, что неизвестность пугает только до тех пор, пока мы не сделаем шаг ей навстречу. Фонарик и светлячки символизируют смелость и знания, которые освещают путь." },
+                { id: "emotion-5", title: "Удивление: Птица Чудес", emoji: "🐦", short_desc: "Каждое «вау!» открывает путь к новым открытиям.", pages: "book_emotions_fifth_1.jpg,book_emotions_fifth_2.jpg,book_emotions_end.jpg", full_desc: "Эта история вдохновляет на любознательность. Она показывает, что мир полон чудес, и каждое удивление — это приглашение к новому открытию. Книга учит смотреть на мир широко открытыми глазами." }
+            ],
+            "Основы": [
+                { id: "basic-1", title: "Рыцарь Мыльного Клинка", emoji: "💧", short_desc: "Как мытьё рук спасает целое королевство.", pages: "book_basic_first_1.jpg,book_basic_first_2.jpg,book_basic_end.jpg", full_desc: "В этой сказке мытьё рук превращается в эпическую битву за чистоту! Ребенок в роли отважного рыцаря сражается с армией микробов, делая важную гигиеническую процедуру весёлой и увлекательной." },
+                { id: "basic-2", title: "Рыцарь Зубного Клинка", emoji: "🦷", short_desc: "Ежедневная чистка зубов — лучшая защита.", pages: "book_basic_second_1.jpg,book_basic_second_2.jpg,book_basic_end.jpg", full_desc: "Забудьте о капризах во время чистки зубов! Эта история превращает зубную щётку в волшебный борд, а ребёнка — в защитника сказочного замка. Книга в игровой форме объясняет важность ухода за зубами." },
+                { id: "basic-3", title: "Крестоносец Пузырей", emoji: "🛁", short_desc: "Купание превращает обычный день в праздник.", pages: "book_basic_third_1.jpg,book_basic_third_2.jpg,book_basic_end.jpg", full_desc: "Больше никаких уговоров пойти купаться! В этой книге ванна становится летающим кораблём, а мыльные пузыри — волшебным оружием против грязевых монстров. Купание превращается в весёлую игру." },
+                { id: "basic-4", title: "Рыцарь Прачечной", emoji: "👕", short_desc: "Свежая одежда дарит уверенность и порядок.", pages: "book_basic_fourth_1.jpg,book_basic_fourth_2.jpg,book_basic_end.jpg", full_desc: "Эта история учит ребёнка аккуратности и любви к порядку. Чистая одежда — это не просто скучная обязанность, а доспехи, которые дарят уверенность и силу для новых свершений." }
+            ]
+        };
+        
+        // --- PAGE ELEMENTS ---
+        const mainContent = document.getElementById('main-content');
+        const productDetailPage = document.getElementById('product-detail-page');
+        const backToMainBtn = document.getElementById('back-to-main');
+        const homeLink = document.getElementById('home-link');
+        const detailMainPhoto = document.getElementById('detail-main-photo');
+        const detailThumbnailContainer = document.getElementById('detail-thumbnail-container');
+        const detailTitle = document.getElementById('detail-title');
+        const detailDescription = document.getElementById('detail-description');
+        const detailOrderBtn = document.getElementById('detail-order-btn');
+        const recommendationsContainer = document.getElementById('recommendations-container');
+        const orderModal = document.getElementById('orderModal');
+        const orderForm = document.getElementById('order-form');
+        const photoInput = document.getElementById('child_photo');
+        const photoPreview = document.getElementById('photo-preview');
+        const bookSelectionList = document.getElementById('book-selection-list');
+        const orderModalCloseBtn = document.querySelector('.order-modal-close');
+
+        // --- FUNCTIONS ---
+        const showMainPage = () => {
+            mainContent.style.display = 'block';
+            productDetailPage.style.display = 'none';
+            window.scrollTo(0, 0);
+        };
+        
+        const createBookCard = (bookData, seriesName) => {
+            const card = document.createElement('div');
+            card.className = 'book-card cursor-pointer';
+            card.dataset.bookId = bookData.id;
+            
+            card.innerHTML = `
+                <img src="${bookData.pages.split(',')[0]}" alt="${bookData.title}" class="w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x565/dddddd/333333?text=...';">
+                <div class="book-card-details">
+                    <h3 class="book-card-title">${bookData.emoji} ${bookData.title}</h3>
+                    <p class="book-card-description">${bookData.short_desc}</p>
+                </div>
+            `;
+            card.addEventListener('click', () => showProductPage(bookData, seriesName));
+            return card;
+        };
+        
+        const showProductPage = (bookData, seriesName) => {
+            detailTitle.textContent = bookData.title;
+            detailDescription.textContent = bookData.full_desc;
+            detailMainPhoto.src = bookData.pages.split(',')[0];
+            detailOrderBtn.dataset.bookId = bookData.id; 
+
+            // Thumbnails
+            detailThumbnailContainer.innerHTML = ''; 
+            const pages = bookData.pages.split(',');
+            pages.forEach((pageSrc, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = pageSrc;
+                thumb.className = 'w-20 h-auto object-cover rounded-md cursor-pointer border-2 border-transparent hover:border-[#4a6fdc] transition-all thumbnail';
+                if (index === 0) thumb.classList.add('active');
+                thumb.addEventListener('click', () => {
+                    detailMainPhoto.src = pageSrc;
+                    detailThumbnailContainer.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                });
+                detailThumbnailContainer.appendChild(thumb);
+            });
+            
+            // Recommendations
+            recommendationsContainer.innerHTML = '';
+            BOOKS_DATA[seriesName].forEach(otherBook => {
+                if (otherBook.id !== bookData.id) {
+                    const recCard = createBookCard(otherBook, seriesName);
+                    recommendationsContainer.appendChild(recCard);
+                }
+            });
+
+            mainContent.style.display = 'none';
+            productDetailPage.style.display = 'block';
+            window.scrollTo(0, 0);
+        };
+
+        // --- INITIALIZATION ---
+        for (const seriesName in BOOKS_DATA) {
+            const containerId = seriesName === 'Эмоции' ? 'series-emotions' : 'series-basic';
+            const container = document.querySelector(`#${containerId} .grid`);
+            BOOKS_DATA[seriesName].forEach(book => {
+                const card = createBookCard(book, seriesName);
+                container.appendChild(card);
+            });
+        }
+        
+        // Populate order form
+        for (const seriesName in BOOKS_DATA) {
+            const seriesTitle = document.createElement('h4');
+            seriesTitle.className = 'col-span-full font-semibold text-gray-800 mt-2 text-lg';
+            seriesTitle.textContent = `Серия "${seriesName}"`;
+            bookSelectionList.appendChild(seriesTitle);
+            BOOKS_DATA[seriesName].forEach(book => {
+                const label = document.createElement('label');
+                label.className = 'flex items-center space-x-3 cursor-pointer text-gray-700';
+                label.innerHTML = `<input type="checkbox" name="selected_books" value="${book.id}" class="h-5 w-5 rounded border-gray-300 text-[#4a6fdc] focus:ring-[#4a6fdc]"><span>${book.title}</span>`;
+                bookSelectionList.appendChild(label);
+            });
+        }
+
+        // --- EVENT BINDING ---
+        backToMainBtn.addEventListener('click', (e) => { e.preventDefault(); showMainPage(); });
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (productDetailPage.style.display === 'block') showMainPage();
+            else window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        const openModal = (modal) => { modal.style.display = 'flex'; };
+        const closeModal = (modal) => { modal.style.display = 'none'; };
+        
+        detailOrderBtn.addEventListener('click', (e) => {
+            openModal(orderModal);
+            document.querySelectorAll('#book-selection-list input[type="checkbox"]').forEach(cb => cb.checked = false);
+            const checkbox = document.querySelector(`input[type="checkbox"][value="${e.target.dataset.bookId}"]`);
+            if (checkbox) checkbox.checked = true;
+        });
+        
+        document.querySelectorAll('.order-btn').forEach(b => b.addEventListener('click', (e) => { e.preventDefault(); openModal(orderModal); }));
+        orderModalCloseBtn.addEventListener('click', () => closeModal(orderModal));
+        
+        photoInput.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (e) => photoPreview.style.backgroundImage = `url('${e.target.result}')`;
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(orderForm);
+            const selectedBooks = formData.getAll('selected_books');
+            if (selectedBooks.length === 0) { alert('Пожалуйста, выберите хотя бы одну книгу.'); return; }
+            let message = `Спасибо за заказ!\n\n`+`Имя ребенка: ${formData.get('child_name')}\n`+`Возраст: ${formData.get('child_age')}\n`+`Телефон: ${formData.get('phone_number')}\n`+`Выбранные книги: ${selectedBooks.join(', ')}\n`;
+            if (formData.get('child_photo').name) { message += `Фото: ${formData.get('child_photo').name}\n`; }
+            alert(message);
+            orderForm.reset();
+            photoPreview.style.backgroundImage = '';
+            closeModal(orderModal);
+        });
+
+        window.addEventListener('click', (event) => { if (event.target == orderModal) closeModal(orderModal); });
+        document.addEventListener('keydown', (event) => { if (event.key === "Escape") closeModal(orderModal); });
+    });
+    </script>
+</body>
+</html>
+

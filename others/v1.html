@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персонализированные раскраски | Учимся через творчество</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDF8F0; /* Creamy background */
+            color: #383838;
+        }
+        /* Custom gradient for buttons and highlights */
+        .brand-gradient {
+            background: linear-gradient(90deg, #FF8C42, #FFD36E);
+        }
+        .brand-gradient-text {
+             background: linear-gradient(90deg, #FF8C42, #FFD36E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Simple transition for interactive elements */
+        .transition-transform {
+            transition: transform 0.3s ease-in-out;
+        }
+        .hover\:scale-105:hover {
+            transform: scale(1.05);
+        }
+         /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 50; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 90%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-image {
+            width: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-40 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold brand-gradient-text">Цветные Истории</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#series-emotions" class="text-gray-600 hover:text-orange-500 transition-colors">Серия "Эмоции"</a>
+                <a href="#series-basic" class="text-gray-600 hover:text-orange-500 transition-colors">Серия "Основы"</a>
+            </div>
+            <a href="#" class="hidden md:inline-block px-6 py-2 text-white font-semibold rounded-full brand-gradient shadow-lg hover:shadow-xl transition-shadow order-btn">Заказать</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="container mx-auto px-6 py-16 md:py-24 text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+            Раскрасьте мир <span class="brand-gradient-text">вашего ребенка</span>
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            Откройте для своего малыша волшебную вселенную, где каждая раскраска — это не просто картинка, а увлекательная история. Наши книги помогут развить воображение, изучить эмоции и освоить важные привычки в игровой форме.
+        </p>
+        <div class="mt-10 flex justify-center items-center gap-4">
+             <a href="#series-emotions" class="px-8 py-4 text-gray-700 font-bold bg-white border border-gray-200 rounded-full shadow-md hover:shadow-lg transition-shadow transform hover:scale-105">Посмотреть серии</a>
+        </div>
+    </main>
+
+    <!-- Series "Emotions" -->
+    <section id="series-emotions" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">📚 Серия "Эмоции"</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Помогаем детям понять и подружиться со своими чувствами через волшебные истории.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                <!-- Book Cards - fixed aspect ratio -->
+                <div class="bg-amber-50 rounded-xl p-6 shadow-md hover:shadow-2xl transition-shadow transition-transform hover:scale-105 cursor-pointer book-card" data-img-src="book_emotions_first_1.jpg" data-title="Гнев: Тигр Внутри">
+                    <img src="book_emotions_first_1.jpg" alt="Гнев: Тигр Внутри" class="w-full rounded-lg mb-4" style="aspect-ratio: 1414 / 2000;" onerror="this.onerror=null;this.src='https://placehold.co/400x565/FFC107/FFFFFF?text=Тигр';">
+                    <h3 class="text-xl font-bold text-orange-600">🐅 Гнев: Тигр Внутри</h3>
+                    <p class="mt-2 text-gray-600 text-sm">Девочка показывает, что гнев можно охладить и направить на добрые поступки.</p>
+                </div>
+                <div class="bg-sky-50 rounded-xl p-6 shadow-md hover:shadow-2xl transition-shadow transition-transform hover:scale-105 cursor-pointer book-card" data-img-src="book_emotions_second_1.jpg" data-title="Грусть: Слёзы Слона">
+                    <img src="book_emotions_second_1.jpg" alt="Грусть: Слёзы Слона" class="w-full rounded-lg mb-4" style="aspect-ratio: 1414 / 2000;" onerror="this.onerror=null;this.src='https://placehold.co/400x565/3B82F6/FFFFFF?text=Слон';">
+                    <h3 class="text-xl font-bold text-sky-600">🐘 Грусть: Слёзы Слона</h3>
+                    <p class="mt-2 text-gray-600 text-sm">Вместе герои понимают: печаль может стать началом чего-то нового и прекрасного.</p>
+                </div>
+                <div class="bg-yellow-50 rounded-xl p-6 shadow-md hover:shadow-2xl transition-shadow transition-transform hover:scale-105 cursor-pointer book-card" data-img-src="book_emotions_third_1.jpg" data-title="Радость: Шумная Обезьянка">
+                    <img src="book_emotions_third_1.jpg" alt="Радость: Шумная Обезьянка" class="w-full rounded-lg mb-4" style="aspect-ratio: 1414 / 2000;" onerror="this.onerror=null;this.src='https://placehold.co/400x565/FBBF24/FFFFFF?text=Обезьянка';">
+                    <h3 class="text-xl font-bold text-yellow-600">🐒 Радость: Шумная Обезьянка</h3>
+                    <p class="mt-2 text-gray-600 text-sm">История о том, что радость становится ярче, когда её делишь с друзьями.</p>
+                </div>
+                <div class="bg-indigo-50 rounded-xl p-6 shadow-md hover:shadow-2xl transition-shadow transition-transform hover:scale-105 cursor-pointer book-card" data-img-src="book_emotions_fourth_1.jpg" data-title="Страх: Шёпот в Тени">
+                    <img src="book_emotions_fourth_1.jpg" alt="Страх: Шёпот в Тени" class="w-full rounded-lg mb-4" style="aspect-ratio: 1414 / 2000;" onerror="this.onerror=null;this.src='https://placehold.co/400x565/6366F1/FFFFFF?text=Сова';">
+                    <h3 class="text-xl font-bold text-indigo-600">🦉 Страх: Шёпот в Тени</h3>
+                    <p class="mt-2 text-gray-600 text-sm">Герои доказывают, что страх уменьшается, когда к нему идёшь навстречу.</p>
+                </div>
+                 <div class="bg-teal-50 rounded-xl p-6 shadow-md hover:shadow-2xl transition-shadow transition-transform hover:scale-105 cursor-pointer book-card" data-img-src="book_emotions_fifth_1.jpg" data-title="Удивление: Птица Чудес">
+                    <img src="book_emotions_fifth_1.jpg" alt="Удивление: Птица Чудес" class="w-full rounded-lg mb-4" style="aspect-ratio: 1414 / 2000;" onerror="this.onerror=null;this.src='https://placehold.co/400x565/14B8A6/FFFFFF?text=Птица';">
+                    <h3 class="text-xl font-bold text-teal-600">🐦 Удивление: Птица Чудес</h3>
+                    <p class="mt-2 text-gray-600 text-sm">Узнаем, что каждое «вау!» открывает путь к новым удивительным открытиям.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Series "Basic" -->
+    <section id="series-basic" class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">📚 Серия "Основы"</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Превращаем ежедневные ритуалы в захватывающие приключения с отважными рыцарями чистоты.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-blue-50 rounded-xl p-6 shadow-md hover:shadow-2xl transition-shadow transition-transform hover:scale-105 cursor-pointer book-card" data-img-src="book_basic_first_1.jpg" data-title="Мытьё рук — «Рыцарь Мыльного Клинка»">
+                    <img src="book_basic_first_1.jpg" alt="Рыцарь Мыльного Клинка" class="w-full rounded-lg mb-4" style="aspect-ratio: 1414 / 2000;" onerror="this.onerror=null;this.src='https://placehold.co/400x565/3B82F6/FFFFFF?text=Мытьё%20рук';">
+                    <h3 class="text-xl font-bold text-blue-600">💧 Рыцарь Мыльного Клинка</h3>
+                    <p class="mt-2 text-gray-600 text-sm">Как отважное мытьё рук спасает целое королевство от нечистоты.</p>
+                </div>
+                <div class="bg-green-50 rounded-xl p-6 shadow-md hover:shadow-2xl transition-shadow transition-transform hover:scale-105 cursor-pointer book-card" data-img-src="book_basic_second_1.jpg" data-title="Чистка зубов — «Рыцарь Зубного Клинка»">
+                    <img src="book_basic_second_1.jpg" alt="Рыцарь Зубного Клинка" class="w-full rounded-lg mb-4" style="aspect-ratio: 1414 / 2000;" onerror="this.onerror=null;this.src='https://placehold.co/400x565/22C55E/FFFFFF?text=Чистка%20зубов';">
+                    <h3 class="text-xl font-bold text-green-600">🦷 Рыцарь Зубного Клинка</h3>
+                    <p class="mt-2 text-gray-600 text-sm">Ежедневная чистка зубов — лучшая защита от любой зубной напасти.</p>
+                </div>
+                <div class="bg-cyan-50 rounded-xl p-6 shadow-md hover:shadow-2xl transition-shadow transition-transform hover:scale-105 cursor-pointer book-card" data-img-src="book_basic_third_1.jpg" data-title="Купание — «Крестоносец Пузырей»">
+                    <img src="book_basic_third_1.jpg" alt="Крестоносец Пузырей" class="w-full rounded-lg mb-4" style="aspect-ratio: 1414 / 2000;" onerror="this.onerror=null;this.src='https://placehold.co/400x565/06B6D4/FFFFFF?text=Купание';">
+                    <h3 class="text-xl font-bold text-cyan-600">🛁 Крестоносец Пузырей</h3>
+                    <p class="mt-2 text-gray-600 text-sm">Купание превращает обычный день в сияющий праздник чистоты.</p>
+                </div>
+                <div class="bg-purple-50 rounded-xl p-6 shadow-md hover:shadow-2xl transition-shadow transition-transform hover:scale-105 cursor-pointer book-card" data-img-src="book_basic_fourth_1.jpg" data-title="Чистая одежда — «Рыцарь Прачечной»">
+                    <img src="book_basic_fourth_1.jpg" alt="Рыцарь Прачечной" class="w-full rounded-lg mb-4" style="aspect-ratio: 1414 / 2000;" onerror="this.onerror=null;this.src='https://placehold.co/400x565/8B5CF6/FFFFFF?text=Чистая%20одежда';">
+                    <h3 class="text-xl font-bold text-purple-600">👕 Рыцарь Прачечной</h3>
+                    <p class="mt-2 text-gray-600 text-sm">Свежая одежда дарит уверенность и порядок в любом царстве.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action (CTA) Section -->
+    <section id="cta" class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="brand-gradient rounded-2xl p-10 md:p-16 text-center shadow-xl">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white">Готовы к приключениям?</h2>
+                <p class="mt-4 text-lg text-white/90 max-w-2xl mx-auto">
+                    Выберите серию и оформите заказ всего за пару минут. Подарите малышу радость и полезные знания в одной волшебной книге!
+                </p>
+                <div class="mt-10">
+                    <a href="#" class="inline-block px-10 py-5 text-orange-500 bg-white font-bold rounded-full text-xl shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105 order-btn">
+                        Заказать сейчас
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+            <p>&copy; 2025 Цветные Истории. Все права защищены.</p>
+            <p class="mt-2 text-sm">Создано с любовью для маленьких первооткрывателей.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content max-w-lg">
+            <span class="close-button image-modal-close">&times;</span>
+            <img class="modal-image" id="modalImageSrc" src="" alt="увеличенное изображение">
+            <h3 id="modalTitle" class="mt-4 text-2xl font-bold text-center"></h3>
+            <button class="mt-6 px-8 py-3 text-white font-bold rounded-full brand-gradient shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 order-from-modal-btn">
+                Заказать эту книгу
+            </button>
+        </div>
+    </div>
+
+    <!-- Phone Number Modal -->
+    <div id="phoneModal" class="modal">
+        <div class="modal-content max-w-md w-full">
+            <span class="close-button phone-modal-close">&times;</span>
+            <h3 class="text-2xl font-bold mb-4 text-center">Оставьте ваш номер</h3>
+            <p class="text-gray-600 text-center mb-6">Наш менеджер скоро свяжется с вами для оформления заказа.</p>
+            <form id="phone-form" class="w-full flex flex-col gap-4">
+                <input type="tel" id="phone-number-input" placeholder="+7 (___) ___-__-__" class="w-full px-5 py-3 text-lg border-2 border-gray-200 rounded-full focus:ring-2 focus:ring-orange-300 focus:border-orange-300 outline-none transition-all">
+                <button type="submit" class="w-full px-8 py-3 text-white font-bold rounded-full brand-gradient shadow-lg hover:shadow-xl transition-shadow">
+                    Отправить
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- Modal Elements ---
+            const imageModal = document.getElementById('imageModal');
+            const phoneModal = document.getElementById('phoneModal');
+            const modalImg = document.getElementById('modalImageSrc');
+            const modalTitle = document.getElementById('modalTitle');
+            const imageModalCloseBtn = document.querySelector('.image-modal-close');
+            const phoneModalCloseBtn = document.querySelector('.phone-modal-close');
+            const orderButtons = document.querySelectorAll('.order-btn');
+            const orderFromModalBtn = document.querySelector('.order-from-modal-btn');
+            const phoneForm = document.getElementById('phone-form');
+
+            // --- Modal Control Functions ---
+            const openPhoneModal = (e) => {
+                if (e) e.preventDefault();
+                phoneModal.style.display = 'flex';
+            };
+            const closePhoneModal = () => {
+                phoneModal.style.display = 'none';
+            };
+            const openImageModal = (imgSrc, title) => {
+                imageModal.style.display = "flex";
+                modalImg.src = imgSrc;
+                modalImg.onerror = function() {
+                    this.onerror = null;
+                    this.src = `https://placehold.co/1414x2000/CCCCCC/FFFFFF?text=Image+Not+Found`;
+                };
+                modalTitle.textContent = title;
+            };
+            const closeImageModal = () => { 
+                imageModal.style.display = "none"; 
+            };
+
+            // --- Event Listeners ---
+
+            // Open Image Modal when a book card is clicked
+            document.querySelectorAll('.book-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    openImageModal(this.dataset.imgSrc, this.dataset.title);
+                });
+            });
+
+            // Open Phone Modal from general order buttons
+            orderButtons.forEach(button => {
+                button.addEventListener('click', openPhoneModal);
+            });
+            
+            // Open Phone Modal from the button INSIDE the image modal
+            orderFromModalBtn.addEventListener('click', (e) => {
+                closeImageModal();
+                openPhoneModal(e);
+            });
+
+            // Handle Phone Form Submission
+            phoneForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const phoneNumber = document.getElementById('phone-number-input').value;
+                if (phoneNumber) {
+                    // Using a custom message box instead of alert()
+                    const messageBox = document.createElement('div');
+                    messageBox.textContent = `Спасибо! Мы получили ваш номер: ${phoneNumber}. Скоро свяжемся с вами.`;
+                    messageBox.style.cssText = 'position:fixed; top:20px; left:50%; transform:translateX(-50%); background:green; color:white; padding:15px 25px; border-radius:8px; z-index:100; box-shadow:0 4px 15px rgba(0,0,0,0.2);';
+                    document.body.appendChild(messageBox);
+                    setTimeout(() => {
+                        messageBox.remove();
+                    }, 4000);
+
+                    phoneForm.reset();
+                    closePhoneModal();
+                } else {
+                    const errorBox = document.createElement('div');
+                    errorBox.textContent = 'Пожалуйста, введите ваш номер телефона.';
+                    errorBox.style.cssText = 'position:fixed; top:20px; left:50%; transform:translateX(-50%); background:red; color:white; padding:15px 25px; border-radius:8px; z-index:100; box-shadow:0 4px 15px rgba(0,0,0,0.2);';
+                    document.body.appendChild(errorBox);
+                     setTimeout(() => {
+                        errorBox.remove();
+                    }, 3000);
+                }
+            });
+
+            // --- General Modal Closing Logic ---
+            imageModalCloseBtn.addEventListener('click', closeImageModal);
+            phoneModalCloseBtn.addEventListener('click', closePhoneModal);
+
+            window.addEventListener('click', function(event) {
+                if (event.target == imageModal) {
+                    closeImageModal();
+                }
+                if (event.target == phoneModal) {
+                    closePhoneModal();
+                }
+            });
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === "Escape") {
+                    closeImageModal();
+                    closePhoneModal();
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
+
