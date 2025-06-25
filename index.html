@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Персональная книга-раскраска | MyHero</title>
+    <title>Персональная книга-раскраска | ABCs</title>
     
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -153,6 +153,58 @@
         main.py-20.md\:py-28.text-center.bg-white.relative.overflow-hidden {
             min-height: 700px; /* Adjust as needed */
         }
+
+        /* FAQ Accordion Styles */
+        .faq-item {
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem; /* Add margin between items */
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem 0; /* Add padding around the question */
+            color: var(--text-dark); /* Use text-dark for question */
+            font-size: 1.1rem; /* Adjust font size */
+            font-weight: 500; /* Use medium weight instead of bold */
+            transition: color 0.3s ease;
+        }
+
+        .faq-question h3 { /* Target the h3 inside faq-question */
+            font-family: 'Poppins', sans-serif; /* Use Poppins font */
+            font-weight: 500; /* Ensure weight is applied */
+            margin: 0; /* Remove default h3 margin */
+        }
+
+        .faq-question:hover {
+            color: var(--primary-pink);
+        }
+
+        .faq-question .icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            color: var(--text-light); /* Use text-light for answer */
+            padding-top: 0.5rem;
+            overflow: hidden;
+            max-height: 0; /* Hide answer by default */
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px; /* Sufficiently large value to show content */
+            transition: max-height 0.3s ease-in;
+        }
+
+        .faq-item.active .faq-question .icon {
+            transform: rotate(45deg); /* Rotate icon for active state */
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -194,6 +246,7 @@
             <div class="blob w-72 h-72 bg-[var(--soft-yellow)] top-1/2 -translate-y-1/2 -left-36"></div>
             <div class="container relative">
                 <h2 class="section-title">Серия "Эмоции"</h2>
+                <br></br>
                 <div id="emotions-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"></div>
             </div>
         </section>
@@ -202,6 +255,7 @@
              <div class="blob w-72 h-72 bg-pink-200 top-1/2 -translate-y-1/2 -right-36"></div>
             <div class="container relative">
                 <h2 class="section-title">Серия "Основы"</h2>
+                <br></br>
                 <div id="basic-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
             </div>
         </section>
@@ -277,9 +331,68 @@
             </div>
         </section>
         
+        <!-- Q&A Section -->
+        <section id="faq" class="py-16 md:py-24 bg-white">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">Часто задаваемые вопросы</h2>
+                    <br></br>
+                    <p class="section-subtitle -mt-8">Найдите ответы на самые популярные вопросы о наших книгах.</p>
+                </div>
+                <div id="faq-container" class="mt-12 max-w-3xl mx-auto space-y-6">
+                    <!-- FAQ items will be injected here by JavaScript -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Сколько времени занимает изготовление?</h3>
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Весь процесс от создания персональной книги до доставки до вашей двери занимает всего 3–4 дня.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Можно ли изменить текст истории?</h3>
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Да, у нас есть опция «Свой вариант» при оформлении заказа. Вы можете описать свои пожелания в специальном поле, и мы постараемся их учесть.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Доставляете ли вы по всему Казахстану?</h3>
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>На данный момент доставка осуществляется по городу Астана.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Какое качество фото требуется?</h3>
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Для наилучшего результата необходимо загрузить чёткое фото вашего ребёнка с хорошим освещением.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Можно ли заказать на разных языках?</h3>
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>На данный момент все наши книги-раскраски доступны на русском языке.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <footer class="bg-[var(--background-light)] border-t border-gray-200/80">
             <div class="container py-8 flex flex-wrap justify-center items-center gap-6">
-                <div class="text-sm text-gray-500">&copy; 2025 MyHero. Все права защищены.</div>
+                <div class="text-sm text-gray-500">&copy; 2025 ABCs. Все права защищены.</div>
             </div>
         </footer>
     </div>
@@ -341,7 +454,7 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        
+
         const BOOKS_DATA = {
             "Эмоции": [
                 { id: "emotion-1", title: "Гнев: Тигр Внутри", short_desc: "Гнев можно охладить и направить на добрые поступки.", pages: "book_emotions_first_1.jpg,book_emotions_first_2.jpg,book_emotions_end.jpg", full_desc: "Эта история учит малыша, что чувствовать гнев — это нормально. Вместе с главной героиней он узнает, как превратить горячие и разрушительные порывы в созидательную энергию, находя выход своим эмоциям в творчестве и добрых делах." },
@@ -373,7 +486,8 @@
         const bookSelectionList = document.getElementById('book-selection-list');
         const customOptionCheckbox = document.getElementById('custom-option-checkbox');
         const customOptionInput = document.getElementById('custom-option-input');
-        
+        // const faqContainer = document.getElementById('faq-container'); // Get the FAQ container - REMOVED
+
         const showMainPage = () => {
             mainContent.style.display = 'block';
             productDetailPage.style.display = 'none';
@@ -445,7 +559,7 @@
             });
         });
         document.querySelector('.order-modal-close').addEventListener('click', closeModal);
-        
+
         customOptionCheckbox.addEventListener('change', () => {
             customOptionInput.classList.toggle('hidden', !customOptionCheckbox.checked);
         });
@@ -536,6 +650,47 @@ chatIds.forEach(chatId => {
             if (productDetailPage.style.display === 'block') showMainPage();
             else window.location.href = 'v14.html';
         });
+
+        // FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle the clicked item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Function to load and display FAQ - REMOVED
+        // const loadFAQ = async () => {
+        //     try {
+        //         const response = await fetch('qa.json');
+        //         const data = await response.json();
+        //         if (data && data.faq) {
+        //             data.faq.forEach(item => {
+        //                 const faqItem = document.createElement('div');
+        //                 faqItem.className = 'border-b border-gray-200 pb-4'; // Add border and padding
+        //                 faqItem.innerHTML = `
+        //                     <h3 class="text-xl font-semibold text-gray-800 mb-2">${item.question}</h3>
+        //                     <p class="text-gray-600">${item.answer}</p>
+        //                 `;
+        //                 faqContainer.appendChild(faqItem);
+        //             });
+        //         }
+        //     } catch (error) {
+        //         console.error('Error loading FAQ:', error);
+        //     }
+        // };
+
+        // Load FAQ when the page loads - REMOVED
+        // loadFAQ();
     });
     </script>
 </body>
