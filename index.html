@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Персональная книга-раскраска | ABCs</title>
+    <title>Персонализированная книга-раскраска | ABCs</title>
 
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,8 +18,8 @@
         :root {
             --primary-pink: #ff5b79; /* Keeping pink defined but not used as primary */
             --primary-pink-dark: #ff3a5e; /* Keeping pink defined but not used as primary */
-            --primary-green: #2ecc71; /* Primary color */
-            --primary-green-dark: #27ae60; /* Darker green for hover */
+            --primary-blue: #3498db; /* Primary color - Changed from green */
+            --primary-blue-dark: #2980b9; /* Darker blue for hover - Changed from green */
             --text-dark: #2d2d2d;
             --text-light: #5f6c7b;
             --background-light: #f9f9fb;
@@ -59,14 +59,14 @@
             text-decoration: none;
         }
         .btn-primary {
-            background-color: var(--primary-green); /* Changed from pink */
+            background-color: var(--primary-blue); /* Changed from green */
             color: white;
-            box-shadow: 0 4px 14px 0 rgba(46, 204, 113, 0.3); /* Changed shadow color */
+            box-shadow: 0 4px 14px 0 rgba(52, 152, 219, 0.3); /* Changed shadow color */
         }
         .btn-primary:hover {
-            background-color: var(--primary-green-dark); /* Changed from pink-dark */
+            background-color: var(--primary-blue-dark); /* Changed from green-dark */
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px 0 rgba(46, 204, 113, 0.35); /* Changed shadow color */
+            box-shadow: 0 6px 20px 0 rgba(52, 152, 219, 0.35); /* Changed shadow color */
         }
         .btn-secondary {
             background-color: white;
@@ -77,16 +77,16 @@
             background-color: var(--background-light);
             border-color: #d1d5db;
         }
-        /* btn-green is now the primary style, keeping it for potential future use */
-        .btn-green {
-            background-color: var(--primary-green);
+        /* btn-blue is now the primary style, keeping it for potential future use */
+        .btn-blue {
+            background-color: var(--primary-blue);
             color: white;
-            box-shadow: 0 4px 14px 0 rgba(46, 204, 113, 0.3);
+            box-shadow: 0 4px 14px 0 rgba(52, 152, 219, 0.3);
         }
-        .btn-green:hover {
-            background-color: var(--primary-green-dark);
+        .btn-blue:hover {
+            background-color: var(--primary-blue-dark);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px 0 rgba(46, 204, 113, 0.35);
+            box-shadow: 0 6px 20px 0 rgba(52, 152, 219, 0.35);
         }
 
         /* Section Title Styles */
@@ -122,7 +122,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
         .series-tag {
-            position: absolute; top: 12px; left: 12px; background-color: var(--primary-green); /* Changed from pink */
+            position: absolute; top: 12px; left: 12px; background-color: var(--primary-blue); /* Changed from green */
             color: white; padding: 4px 10px; border-radius: 9999px; font-size: 0.8rem; font-weight: 600;
         }
         .book-card-details {
@@ -146,10 +146,10 @@
         .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center; padding: 1rem; }
         .modal-content { position: relative; background-color: #fefefe; margin: auto; padding: 2rem; border-radius: 16px; max-width: 90%; max-height: 90vh; display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
         .close-button { position: absolute; top: 15px; right: 25px; color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; }
-        .thumbnail.active { border-color: var(--primary-green); } /* Changed from pink */
+        .thumbnail.active { border-color: var(--primary-blue); } /* Changed from green */
         .product-meta { background-color: var(--background-light); padding: 20px; border-radius: 12px; margin-top: 25px; }
         .meta-item { display: flex; align-items: center; margin-bottom: 12px; font-size: 0.95rem; }
-        .meta-icon { margin-right: 12px; color: var(--primary-green); font-weight: bold; } /* Changed from pink */
+        .meta-icon { margin-right: 12px; color: var(--primary-blue); font-weight: bold; } /* Changed from green */
         .blob { position: absolute; border-radius: 50%; opacity: 0.15; z-index: -1; filter: blur(40px); }
 
         main.py-20.md\:py-28.text-center.bg-white.relative.overflow-hidden {
@@ -182,7 +182,7 @@
         }
 
         .faq-question:hover {
-            color: var(--primary-green); /* Changed from pink */
+            color: var(--primary-blue); /* Changed from green */
         }
 
         .faq-question .icon {
@@ -214,11 +214,11 @@
     <!-- Header -->
     <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-200/80">
         <div class="container flex justify-between items-center py-4">
-            <a href="v14.html" id="home-link" class="text-2xl font-bold text-gray-800">My<span class="text-[var(--primary-green)]">Hero</span></a> <!-- Changed from pink -->
+            <a href="v14.html" id="home-link" class="text-2xl font-bold text-gray-800"><img src="logo.png" alt="MyHero Logo" class="h-8"></a> <!-- Changed from green -->
             <div id="main-nav" class="hidden md:flex items-center space-x-7 text-base">
-                <a href="#series-emotions" class="text-gray-600 hover:text-[var(--primary-green)] transition-colors font-medium">Книги</a> <!-- Changed from pink -->
-                <a href="#how-it-works" class="text-gray-600 hover:text-[var(--primary-green)] transition-colors font-medium">Как это работает</a> <!-- Changed from pink -->
-                <a href="#pricing" class="text-gray-600 hover:text-[var(--primary-green)] transition-colors font-medium">Цены</a> <!-- Changed from pink -->
+                <a href="#series-emotions" class="text-gray-600 hover:text-[var(--primary-blue)] transition-colors font-medium">О продукте</a> <!-- Changed from green -->
+                <a href="#how-it-works" class="text-gray-600 hover:text-[var(--primary-blue)] transition-colors font-medium">Как это работает</a> <!-- Changed from green -->
+                <a href="#pricing" class="text-gray-600 hover:text-[var(--primary-blue)] transition-colors font-medium">Цены</a> <!-- Changed from green -->
             </div>
             <button class="btn btn-primary order-btn" data-plan="single">Заказать</button>
         </div>
@@ -227,12 +227,12 @@
     <!-- Main Content Wrapper -->
     <div id="main-content">
         <!-- Hero Section -->
-        <main class="py-20 md:py-28 text-center relative overflow-hidden flex items-center justify-center" style="min-height: 700px; background-color: rgba(46, 204, 113, 0.1);"> <!-- Changed background color to green tint -->
-            <div class="blob w-96 h-96 bg-[var(--primary-green)] -top-20 -left-20"></div> <!-- Changed from pink -->
+        <main class="py-20 md:py-28 text-center relative overflow-hidden flex items-center justify-center" style="min-height: 700px; background-color: rgba(52, 152, 219, 0.1);"> <!-- Changed background color to blue tint -->
+            <div class="blob w-96 h-96 bg-[var(--primary-blue)] -top-20 -left-20"></div> <!-- Changed from green -->
             <div class="blob w-80 h-80 bg-[var(--soft-blue)] -bottom-20 -right-20"></div>
             <div class="container relative">
                 <h1 class="text-5xl md:text-7xl font-bold text-[var(--text-dark)] leading-tight max-w-4xl mx-auto">
-                    Персональная книга-раскраска с обучающим элементом
+                    Персонализированная книга-раскраска с обучающим элементом
                 </h1>
                 <p class="mt-4 text-xl md:text-2xl text-[var(--text-light)] max-w-3xl mx-auto">
                     Подарите ребенку уникальное приключение, где он станет главным героем собственной истории!
@@ -242,6 +242,70 @@
                 </div>
             </div>
         </main>
+
+        <!-- New Section: Why Our Coloring Books -->
+        <section id="advantages-of-our-colorings" class="py-16 md:py-24 bg-[var(--background-light)]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Main Question -->
+                <h1 class="text-3xl sm:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+                    Почему наши раскраски — это не просто игра, а умное решение?
+                </h1>
+
+                <!-- Container for the sections -->
+                <div class="space-y-8">
+                    <!-- Scientific Basis Section -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+                        <h2 class="text-3xl font-bold mb-6 text-[var(--primary-blue)] text-center">
+                            Научная основа
+                        </h2>
+                        <!-- Key features in a horizontal line on larger screens -->
+                        <ul class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center">
+                            <!-- Advantage 1: Stress/Brain -->
+                            <li class="flex flex-col items-center">
+                                <svg class="w-10 h-10 text-[var(--primary-blue)] mb-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                <span>Раскрашивание снижает стресс и активирует мозг</span>
+                            </li>
+                            <!-- Advantage 2: Personalization/Learning -->
+                            <li class="flex flex-col items-center">
+                                <svg class="w-10 h-10 text-[var(--primary-blue)] mb-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5S19.832 5.477 21 6.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                                <span>Персонализация усиливает вовлечённость и обучение <span class="block text-sm text-gray-500 dark:text-gray-400">(подтверждено Harvard Business Review)</span></span>
+                            </li>
+                            <!-- Advantage 3: Development/Skills -->
+                            <li class="flex flex-col items-center">
+                                <svg class="w-10 h-10 text-[var(--primary-blue)] mb-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Развиваются: эмпатия, внимание, воображение, саморегуляция и др.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Convenience Section -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+                        <h2 class="text-3xl font-bold mb-6 text-[var(--primary-blue)] text-center">
+                            Это удобно
+                        </h2>
+                         <!-- Key features in a horizontal line on larger screens -->
+                        <ul class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center">
+                            <!-- Advantage 1: Time saving -->
+                            <li class="flex flex-col items-center">
+                                <svg class="w-10 h-10 text-[var(--primary-blue)] mb-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span><strong>Экономия времени</strong> — не нужно искать идеи, всё уже готово</span>
+                            </li>
+                            <!-- Advantage 2: Development without stress/Results -->
+                            <li class="flex flex-col items-center">
+                                <svg class="w-10 h-10 text-[var(--primary-blue)] mb-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span><strong>Развитие без стресса</strong> — ребёнок играет, вы видите результат</span>
+                            </li>
+                            <!-- Advantage 3: Flexibility/Location -->
+                            <li class="flex flex-col items-center">
+                                <svg class="w-10 h-10 text-[var(--primary-blue)] mb-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m0 0l-7 7m7-7v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                                <span><strong>Гибкость</strong> — используйте дома, в детсаду или в дороге</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End New Section -->
 
         <!-- Series Sections -->
         <section id="series-emotions" class="py-16 md:py-24 bg-[var(--background-light)] relative overflow-hidden">
@@ -254,7 +318,7 @@
         </section>
 
         <section id="series-basic" class="py-16 md:py-24 bg-white relative overflow-hidden">
-             <div class="blob w-72 h-72 bg-green-200 top-1/2 -translate-y-1/2 -right-36"></div> <!-- Changed from pink-200 -->
+             <div class="blob w-72 h-72 bg-blue-200 top-1/2 -translate-y-1/2 -right-36"></div> <!-- Changed from green-200 -->
             <div class="container relative">
                 <h2 class="section-title">Серия "Основы"</h2>
                 <br></br>
@@ -268,32 +332,32 @@
                 <div class="text-center">
                     <h2 class="section-title">Как это работает</h2>
                     <br></br>
-                    <p class="section-subtitle -mt-8">Создание персональной раскраски - это просто и быстро.</p>
+                    <p class="section-subtitle -mt-8">Создание персонализированной книги-раскраски - это просто и быстро.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-12 text-center">
                     <!-- Step 1 -->
                     <div class="flex flex-col items-center">
-                        <div class="bg-green-100 p-4 rounded-full"> <!-- Changed from pink-100 -->
-                            <svg class="w-10 h-10 text-[var(--primary-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l-1-1m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <!-- Changed text color -->
+                        <div class="bg-blue-100 p-4 rounded-full"> <!-- Changed from green-100 -->
+                            <svg class="w-10 h-10 text-[var(--primary-blue)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l-1-1m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <!-- Changed text color -->
                         </div>
                         <h3 class="text-2xl font-bold mt-4">Загрузите фото</h3>
                         <p class="text-gray-600 mt-2">Загрузите чёткое фото вашего ребёнка с хорошим освещением.</p>
                     </div>
                     <!-- Step 2 -->
                     <div class="flex flex-col items-center">
-                        <div class="bg-blue-100 p-4 rounded-full">
-                             <svg class="w-10 h-10 text-[var(--primary-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg> <!-- Changed text color -->
+                        <div class="bg-blue-100 p-4 rounded-full"> <!-- Changed from blue-100 (already blue, but keeping consistent change) -->
+                             <svg class="w-10 h-10 text-[var(--primary-blue)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg> <!-- Changed text color -->
                         </div>
                         <h3 class="text-2xl font-bold mt-4">Мы создаем и печатаем</h3>
-                        <p class="text-gray-600 mt-2">Художники создают персональную книгу и профессионально её печатают.</p>
+                        <p class="text-gray-600 mt-2">Создаём персонализированную книгу-раскраску с помощью ИИ.</p>
                     </div>
                     <!-- Step 3 -->
                     <div class="flex flex-col items-center">
                          <div class="bg-yellow-100 p-4 rounded-full">
-                            <svg class="w-10 h-10 text-[var(--primary-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2-2h8a1 1 0 001-1z"></path></svg> <!-- Changed text color -->
+                            <svg class="w-10 h-10 text-[var(--primary-blue)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2-2h8a1 1 0 001-1z"></path></svg> <!-- Changed text color -->
                         </div>
-                        <h3 class="text-2xl font-bold mt-4">Получите вашу книгу</h3>
-                        <p class="text-gray-600 mt-2">Уникальная раскраска доставляется прямо до двери. Готово за 3–4 дня</p>
+                        <h3 class="text-2xl font-bold mt-4">Получите вашу книгу-раскраску</h3>
+                        <p class="text-gray-600 mt-2">Готовый заказ бережно упаковываем и доставляем к вашей двери всего за 3–5 дней.</p>
                     </div>
                 </div>
                 <div class="text-center mt-12">
@@ -306,28 +370,28 @@
         <section id="pricing" class="py-16 md:py-24 bg-[var(--background-light)]">
             <div class="container">
                 <div class="max-w-3xl mx-auto text-center">
-                    <h2 class="section-title">Наши планы</h2>
+                    <h2 class="section-title">Тарифы</h2>
                 </div>
                 <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     <!-- Single Book Card -->
-                    <div class="book-card flex flex-col p-8 text-center border-2 border-[var(--primary-green)] relative" style="padding-top:2.5rem;"> <!-- Changed border color -->
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[var(--primary-green)] text-white px-4 py-1 rounded-full text-sm font-semibold">Стандарт</div> <!-- Changed background color -->
+                    <div class="book-card flex flex-col p-8 text-center border-2 border-[var(--primary-blue)] relative" style="padding-top:2.5rem;"> <!-- Changed border color -->
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[var(--primary-blue)] text-white px-4 py-1 rounded-full text-sm font-semibold">Разовый</div> <!-- Changed background color -->
                         <h3 class="text-4xl font-bold text-gray-800">📘 1 книга-раскраска</h3>
-                        <p class="text-5xl font-extrabold my-4 text-[var(--primary-green)]">4 900 ₸</p> <!-- Changed text color -->
-                        <p class="text-gray-600 flex-grow">Идеально для подарка или знакомства с нашими историями.</p>
+                        <p class="text-5xl font-extrabold my-4 text-[var(--primary-blue)]">4 900 ₸</p> <!-- Changed text color -->
+                        <p class="text-gray-600 flex-grow">Идеально для подарка или первого обучения.</p>
                         <button class="btn btn-primary mt-6 w-full text-lg order-btn" data-plan="single">Заказать</button>
                     </div>
                     <!-- 3 Books Set Card -->
                     <div class="book-card flex flex-col p-8 text-center relative" style="padding-top:2.5rem;">
                         <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gray-700 text-white px-4 py-1 rounded-full text-sm font-semibold">Выгодный</div>
-                        <h3 class="text-4xl font-bold text-gray-800">📚 Набор из 3 раскрасок</h3>
-                        <p class="text-5xl font-extrabold my-4 text-[var(--primary-green)]">9 900 ₸</p> <!-- Changed text color -->
-                        <p class="text-gray-600 flex-grow">Выбирайте любые сюжеты — выгоднее вместе!</p>
+                        <h3 class="text-4xl font-bold text-gray-800">📚 Набор из 3 книг-раскрасок</h3>
+                        <p class="text-5xl font-extrabold my-4 text-[var(--primary-blue)]">9 900 ₸</p> <!-- Changed text color -->
+                        <p class="text-gray-600 flex-grow">Более выгодно и эффективно, так как для полного закрепления навыков и знаний необходима практика.</p>
                         <button class="btn btn-secondary mt-6 w-full order-btn" data-plan="set">Заказать</button>
                     </div>
                 </div>
                 <div class="text-center mt-8 text-gray-500 space-y-2">
-                    <p>🚚 Доставка по городу Астана.</p>
+                    <p>🚚 Бесплатная доставка по городу Астана.</p>
                     <p>💳 Оплата через Kaspi или банковскую карту.</p>
                 </div>
             </div>
@@ -339,7 +403,7 @@
                 <div class="text-center">
                     <h2 class="section-title">Часто задаваемые вопросы</h2>
                     <br></br>
-                    <p class="section-subtitle -mt-8">Найдите ответы на самые популярные вопросы о наших книгах.</p>
+                    <p class="section-subtitle -mt-8">Найдите ответы на самые популярные вопросы о наших книгах-раскрасках.</p>
                 </div>
                 <div id="faq-container" class="mt-12 max-w-3xl mx-auto space-y-6">
                     <!-- FAQ items will be injected here by JavaScript -->
@@ -349,7 +413,7 @@
                             <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                         </div>
                         <div class="faq-answer">
-                            <p>Весь процесс от создания персональной книги до доставки до вашей двери занимает всего 3–4 дня.</p>
+                            <p>Весь процесс от создания персонализированной книги-раскраски до доставки занимает всего 3–4 дня.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -385,7 +449,7 @@
                             <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                         </div>
                         <div class="faq-answer">
-                            <p>На данный момент все наши книги-раскраски доступны на русском языке.</p>
+                            <p>На данный момент все наши книги-раскраски доступны на русском и казахском языках.</p>
                         </div>
                     </div>
                 </div>
@@ -402,7 +466,7 @@
     <!-- PRODUCT DETAIL PAGE (HIDDEN BY DEFAULT) -->
     <div id="product-detail-page" class="hidden">
        <section class="container py-8 md:py-12">
-            <div class="mb-6 text-base"><a href="#" id="back-to-main" class="text-gray-600 hover:text-[var(--primary-green)] transition-colors font-medium">&larr; Назад ко всем книгам</a></div> <!-- Changed from pink -->
+            <div class="mb-6 text-base"><a href="#" id="back-to-main" class="text-gray-600 hover:text-[var(--primary-blue)] transition-colors font-medium">&larr; Назад ко всем книгам</a></div> <!-- Changed from green -->
             <div class="flex flex-col md:flex-row gap-8 md:gap-12">
                 <div class="w-full md:w-1/2 lg:w-2/5"><img id="detail-main-photo" src="" alt="Главное изображение книги" class="w-full h-auto object-contain rounded-2xl shadow-lg border-2 border-gray-100 mb-4"><div id="detail-thumbnail-container" class="flex gap-3 overflow-x-auto pb-2"></div></div>
                 <div class="w-full md:w-1/2 lg:w-3/5 flex flex-col justify-center">
@@ -413,7 +477,7 @@
                 </div>
             </div>
        </section>
-       <section id="recommendations" class="pt-16 md:pt-24 pb-8 bg-[var(--background-light)]"><div class="container"><h2 class="section-title !text-4xl md:!text-5xl">Другие книги из этой серии</h2><div id="recommendations-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div></div></section>
+       <section id="recommendations" class="pt-16 md:pt-24 pb-8 bg-[var(--background-light)]"><div class="container"><h2 class="section-title !text-4xl md:!text-5xl">Другие книги-раскраски из этой серии</h2><div id="recommendations-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div></div></section>
     </div>
 
     <!-- Main Order Modal -->
@@ -425,28 +489,28 @@
                  <fieldset class="mb-6">
                     <legend class="text-2xl font-bold mb-4 w-full border-b pb-2 text-gray-700">1. О герое книги</legend>
                     <div class="space-y-4">
-                        <input type="text" name="child_name" placeholder="Имя ребенка" required class="w-full px-4 py-2 border rounded-lg focus:ring-[var(--primary-green)] focus:border-[var(--primary-green)]"> <!-- Changed focus color -->
-                        <input type="number" name="child_age" placeholder="Возраст (лет)" min="1" max="12" required class="w-full px-4 py-2 border rounded-lg focus:ring-[var(--primary-green)] focus:border-[var(--primary-green)]"> <!-- Changed focus color -->
+                        <input type="text" name="child_name" placeholder="Имя ребенка" required class="w-full px-4 py-2 border rounded-lg focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]"> <!-- Changed focus color -->
+                        <input type="number" name="child_age" placeholder="Возраст (лет)" min="1" max="12" required class="w-full px-4 py-2 border rounded-lg focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]"> <!-- Changed focus color -->
                     </div>
                 </fieldset>
                 <fieldset class="mb-6">
-                    <legend class="text-2xl font-bold mb-4 w-full border-b pb-2 text-gray-700">2. Выберите книги и дополнительные опции</legend>
+                    <legend class="text-2xl font-bold mb-4 w-full border-b pb-2 text-gray-700">2. Выберите книги-раскраски и дополнительные опции</legend>
                     <div id="book-selection-list" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                         <!-- Checkboxes will be dynamically injected here -->
                     </div>
                     <!-- Moved from original fieldset 3 -->
                     <div class="space-y-3 mt-6 pt-4 border-t border-gray-200">
                         <h4 class="font-semibold text-gray-800 text-lg">Дополнительные опции</h4>
-                        <label class="flex items-center"><input type="checkbox" name="option" value="school_prep" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-green)] focus:ring-[var(--primary-green)]"><span class="ml-3 text-gray-700">Подготовка к школе</span></label> <!-- Changed text/focus color -->
-                        <label class="flex items-center"><input type="checkbox" name="option" value="custom" id="custom-option-checkbox" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-green)] focus:ring-[var(--primary-green)]"><span class="ml-3 text-gray-700">Свой вариант</span></label> <!-- Changed text/focus color -->
-                        <textarea id="custom-option-input" name="custom_option_text" placeholder="Опишите ваши пожелания..." class="w-full mt-2 px-4 py-2 border rounded-lg focus:ring-[var(--primary-green)] focus:border-[var(--primary-green)] hidden"></textarea> <!-- Changed focus color -->
+                        <label class="flex items-center"><input type="checkbox" name="option" value="school_prep" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)]"><span class="ml-3 text-gray-700">Подготовка к школе</span></label> <!-- Changed text/focus color -->
+                        <label class="flex items-center"><input type="checkbox" name="option" value="custom" id="custom-option-checkbox" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)]"><span class="ml-3 text-gray-700">Свой вариант</span></label> <!-- Changed text/focus color -->
+                        <textarea id="custom-option-input" name="custom_option_text" placeholder="Опишите ваши пожелания..." class="w-full mt-2 px-4 py-2 border rounded-lg focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)] hidden"></textarea> <!-- Changed focus color -->
                     </div>
                 </fieldset>
                  <fieldset class="mb-6">
                     <legend class="text-2xl font-bold mb-4 w-full border-b pb-2 text-gray-700">3. Контакты</legend>
                     <div class="relative">
                         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">+7</span>
-                         <input type="tel" name="phone_number" placeholder="(700) 123-45-67" required class="w-full pl-8 pr-4 py-2 border rounded-lg focus:ring-[var(--primary-green)] focus:border-[var(--primary-green)]" pattern="[0-9]{10}" title="Введите 10 цифр номера телефона"> <!-- Changed focus color -->
+                         <input type="tel" name="phone_number" placeholder="(700) 123-45-67" required class="w-full pl-8 pr-4 py-2 border rounded-lg focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)]" pattern="[0-9]{10}" title="Введите 10 цифр номера телефона"> <!-- Changed focus color -->
                     </div>
                 </fieldset>
                 <button type="submit" class="btn btn-primary w-full text-lg">Оставить заявку</button>
@@ -515,7 +579,7 @@
             pages.forEach((pageSrc, index) => {
                 const thumb = document.createElement('img');
                 thumb.src = pageSrc;
-                thumb.className = 'w-20 h-auto object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-[var(--primary-green)] transition-all thumbnail'; // Changed hover border color
+                thumb.className = 'w-20 h-auto object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-[var(--primary-blue)] transition-all thumbnail'; // Changed hover border color
                 if (index === 0) thumb.classList.add('active');
                 thumb.addEventListener('click', () => {
                     detailMainPhoto.src = pageSrc;
@@ -575,7 +639,7 @@
             BOOKS_DATA[seriesName].forEach(book => {
                 const label = document.createElement('label');
                 label.className = 'flex items-center space-x-3 cursor-pointer text-gray-700';
-                label.innerHTML = `<input type="checkbox" name="selected_books" value="${book.title}" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-green)] focus:ring-[var(--primary-green)]"><span>${book.title}</span>`; // Changed text/focus color
+                label.innerHTML = `<input type="checkbox" name="selected_books" value="${book.title}" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)]"><span>${book.title}</span>`; // Changed text/focus color
                 bookSelectionList.appendChild(label);
             });
         }
@@ -588,7 +652,7 @@
 
             // Check for at least one book or one option selected
             if (selectedBooks.length === 0 && selectedOptions.length === 0) {
-                alert('Пожалуйста, выберите хотя бы одну книгу или дополнительную опцию.');
+                alert('Пожалуйста, выберите хотя бы одну книгу-раскраску или дополнительную опцию.');
                 return;
             }
 
@@ -597,7 +661,7 @@
             let message = `Ноп-новый заказ!\n\n`
                 +`Имя ребенка: ${formData.get('child_name')}\n`
                 +`Возраст: ${formData.get('child_age')}\n\n`
-                +`Выбранные книги:\n- ${selectedBooks.join('\n- ')}\n\n`
+                +`Выбранные книги-раскраски:\n- ${selectedBooks.join('\n- ')}\n\n`
                 + `Дополнительные опции:\n`;
 
             let hasOptions = false;
