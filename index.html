@@ -330,6 +330,17 @@
             </div>
         </section>
 
+        <!-- New Section: Серия "Безопастность" -->
+        <section id="series-security" class="py-16 md:py-24 bg-[var(--background-light)] relative overflow-hidden">
+            <div class="blob w-72 h-72 bg-[var(--soft-green)] top-1/2 -translate-y-1/2 -left-36"></div>
+            <div class="container flex flex-col items-center justify-center relative">
+                <h2 class="section-title text-center">Серия "Безопастность"</h2>
+                <br>
+                <div id="security-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-8 mx-auto" style="max-width: 800px; justify-items: center;"></div>
+            </div>
+        </section>
+        <!-- End New Section -->
+
         <!-- New "How It Works" Section -->
         <section id="how-it-works" class="py-16 md:py-24 bg-white">
             <div class="container">
@@ -550,6 +561,10 @@
                 { id: "basic-2", title: "Рыцарь Зубного Клинка", short_desc: "Ежедневная чистка зубов — лучшая защита.", pages: "book_basic_second_1.jpg,book_basic_second_2.jpg,book_basic_end.jpg", full_desc: "Забудьте о капризах во время чистки зубов! Эта история превращает зубную щётку в волшебный борд, а ребёнка — в защитника сказочного замка. Книга в игровой форме объясняет важность ухода за зубами." },
                 { id: "basic-3", title: "Крестоносец Пузырей", short_desc: "Купание превращает обычный день в праздник.", pages: "book_basic_third_1.jpg,book_basic_third_2.jpg,book_basic_end.jpg", full_desc: "Больше никаких уговоров пойти купаться! В этой книге ванна становится летающим кораблём, а мыльные пузыри — волшебным оружием против грязевых монстров. Купание превращается в весёлую игру." },
                 { id: "basic-4", title: "Рыцарь Прачечной", short_desc: "Свежая одежда дарит уверенность и порядок.", pages: "book_basic_fourth_1.jpg,book_basic_fourth_2.jpg,book_basic_end.jpg", full_desc: "Эта история учит ребёнка аккуратности и любви к порядку. Чистая одежда — это не просто скучная обязанность, а доспехи, которые дарят уверенность и силу для новых свершений." }
+            ],
+            "Безопастность": [
+                { id: "security-1", title: "Спасательный отряд Айдара: «Водные спасатели»", short_desc: "Как мытьё рук спасает целое королевство.", pages: "book_security_first_1.jpg,book_basic_end.jpg", full_desc: "Айдар и его верный робот-помощник патрулируют побережье и учат малышей правилам безопасности на воде. С их помощью зверята узнают, как правильно пользоваться спасательным кругом, не заплывать за буйки и всегда быть начеку у воды. В финале Айдар открывает Школу Юных Спасателей, где каждый может стать героем пляжа!" },
+                { id: "security-2", title: "Спасательный отряд Армана: «Город безопасности»", short_desc: "Ежедневная чистка зубов — лучшая защита.", pages: "book_security_second_1.jpg,book_basic_end.jpg", full_desc: "Арман со своим дружелюбным роботом охраняют улицы Города Осторожности. Они помогают зверятам переходить дорогу на зелёный свет, не разговаривать с незнакомцами и знать, что делать в экстренной ситуации. Каждый день — новая миссия! В конце Арман открывает Академию Безопасности, чтобы каждый житель знал, как защитить себя и других." }
             ]
         };
 
@@ -716,7 +731,14 @@ chatIds.forEach(chatId => {
         });
 
         for (const seriesName in BOOKS_DATA) {
-            const containerId = seriesName === 'Эмоции' ? 'emotions-grid' : 'basic-grid';
+            let containerId;
+            if (seriesName === 'Эмоции') {
+                containerId = 'emotions-grid';
+            } else if (seriesName === 'Основы') {
+                containerId = 'basic-grid';
+            } else if (seriesName === 'Безопастность') {
+                containerId = 'security-grid'; // Use the new ID
+            }
             const container = document.getElementById(containerId);
             if (container) {
                 BOOKS_DATA[seriesName].forEach(book => {
