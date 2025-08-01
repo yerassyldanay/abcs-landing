@@ -471,6 +471,12 @@
                          <input type="tel" name="phone_number" placeholder="(700) 123-45-67" required class="w-full pl-8 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)] transition" pattern="[0-9]{10}" title="Введите 10 цифр номера телефона">
                     </div>
                 </fieldset>
+                <div class="mb-4 text-center">
+                    <p class="text-sm text-gray-600">
+                        Отправляя заявку, вы соглашаетесь с нашей 
+                        <a href="#" id="order-privacy-policy-link" class="text-[var(--primary-blue)] underline hover:text-[var(--dark-blue)]">политикой конфиденциальности</a>
+                    </p>
+                </div>
                 <button type="submit" class="btn btn-primary w-full text-lg">Оставить заявку</button>
             </form>
         </div>
@@ -481,7 +487,7 @@
         <div class="modal-content" style="max-width: 800px; max-height: 95vh;">
             <span class="close-button privacy-modal-close">&times;</span>
             <h3 class="text-3xl font-bold mb-6 text-center text-[var(--text-dark)]">Политика конфиденциальности</h3>
-            <div class="privacy-content text-left text-sm leading-relaxed max-h-96 overflow-y-auto">
+            <div class="privacy-content text-left text-base leading-relaxed max-h-96 overflow-y-auto">
                 <h4 class="text-xl font-bold mb-4 text-[var(--text-dark)]">1. Общие положения</h4>
                 <p class="mb-4">Настоящая Политика конфиденциальности регулирует порядок обработки и использования персональных данных пользователей сайта abcs.kz (далее — «Сайт») компании MyHero. Администрация сайта обязуется соблюдать конфиденциальность персональных данных пользователей.</p>
                 
@@ -715,6 +721,15 @@
             const privacyLink = document.getElementById('privacy-policy-link');
             if (privacyLink) {
                 privacyLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openPrivacyModal();
+                });
+            }
+            
+            // Setup privacy policy link in order modal
+            const orderPrivacyLink = document.getElementById('order-privacy-policy-link');
+            if (orderPrivacyLink) {
+                orderPrivacyLink.addEventListener('click', (e) => {
                     e.preventDefault();
                     openPrivacyModal();
                 });
