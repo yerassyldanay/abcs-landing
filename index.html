@@ -117,7 +117,7 @@
 
         /* Modal & Product Detail Styles */
         .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center; padding: 1rem; }
-        .modal-content { position: relative; background-color: #fefefe; margin: auto; padding: 2rem; border-radius: 16px; width: 95%; max-width: 600px; max-height: 90vh; display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
+        .modal-content { position: relative; background-color: #fefefe; margin: auto; padding: 2rem; border-radius: 16px; width: 95%; max-width: 800px; max-height: 90vh; display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
         .close-button { position: absolute; top: 15px; right: 25px; color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; }
         .thumbnail.active { border-color: var(--primary-blue); }
         .product-meta { background-color: var(--background-light); padding: 20px; border-radius: 12px; margin-top: 25px; }
@@ -459,8 +459,50 @@
                     </div>
                     <div class="space-y-3 mt-6 pt-4 border-t border-gray-200">
                         <h4 class="font-semibold text-gray-800 text-lg">Дополнительные опции</h4>
-                        <label class="flex items-center"><input type="checkbox" name="option" value="school_prep" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)]"><span class="ml-3 text-gray-700">Подготовка к школе</span></label>
-                        <label class="flex items-center"><input type="checkbox" name="option" value="custom" id="custom-option-checkbox" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)]"><span class="ml-3 text-gray-700">Свой вариант</span></label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                            <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="option" value="school_prep_numbers" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <div class="flex-1">
+                                    <div class="font-medium text-gray-900">Подготовка к школе: Цифры</div>
+                                    <div class="text-sm text-gray-600 mt-1">Изучение чисел от 1 до 10, счет и простые математические понятия</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="option" value="school_prep_alphabet" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <div class="flex-1">
+                                    <div class="font-medium text-gray-900">Подготовка к школе: Алфавит</div>
+                                    <div class="text-sm text-gray-600 mt-1">Знакомство с буквами, звуками и первыми словами</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="option" value="school_prep_shapes" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <div class="flex-1">
+                                    <div class="font-medium text-gray-900">Подготовка к школе: Фигуры</div>
+                                    <div class="text-sm text-gray-600 mt-1">Изучение геометрических фигур, форм и пространственного мышления</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="option" value="school_prep_colors" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <div class="flex-1">
+                                    <div class="font-medium text-gray-900">Подготовка к школе: Цвета</div>
+                                    <div class="text-sm text-gray-600 mt-1">Изучение основных и дополнительных цветов, их сочетаний</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="option" value="school_prep_writing" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <div class="flex-1">
+                                    <div class="font-medium text-gray-900">Подготовка к школе: Письмо</div>
+                                    <div class="text-sm text-gray-600 mt-1">Развитие мелкой моторики, подготовка руки к письму</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="option" value="custom" id="custom-option-checkbox" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <div class="flex-1">
+                                    <div class="font-medium text-gray-900">Свой вариант</div>
+                                    <div class="text-sm text-gray-600 mt-1">Опишите ваши индивидуальные пожелания и идеи</div>
+                                </div>
+                            </label>
+                        </div>
                         <textarea id="custom-option-input" name="custom_option_text" placeholder="Опишите ваши пожелания..." class="w-full mt-2 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)] hidden transition"></textarea>
                     </div>
                 </fieldset>
@@ -768,7 +810,11 @@
 
             if (selectedOptions.length > 0) {
                 selectedOptions.forEach(opt => {
-                    if (opt === 'school_prep') message += '- Подготовка к школе\n';
+                    if (opt === 'school_prep_numbers') message += '- Подготовка к школе: Цифры\n';
+                    if (opt === 'school_prep_alphabet') message += '- Подготовка к школе: Алфавит\n';
+                    if (opt === 'school_prep_shapes') message += '- Подготовка к школе: Фигуры\n';
+                    if (opt === 'school_prep_colors') message += '- Подготовка к школе: Цвета\n';
+                    if (opt === 'school_prep_writing') message += '- Подготовка к школе: Письмо\n';
                     if (opt === 'custom') {
                         const customText = formData.get('custom_option_text');
                         message += `- Свой вариант: ${customText || 'Не указано'}\n`;
@@ -823,8 +869,14 @@
                 bookSelectionList.appendChild(seriesTitle);
                 BOOKS_DATA[seriesName].forEach(book => {
                     const label = document.createElement('label');
-                    label.className = 'flex items-center space-x-3 cursor-pointer text-gray-700';
-                    label.innerHTML = `<input type="checkbox" name="selected_books" value="${book.title}" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)]"><span>${book.title}</span>`;
+                    label.className = 'flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors';
+                    label.innerHTML = `
+                        <input type="checkbox" name="selected_books" value="${book.title}" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                        <div class="flex-1">
+                            <div class="font-medium text-gray-900">${book.title}</div>
+                            <div class="text-sm text-gray-600 mt-1">${book.short_desc}</div>
+                        </div>
+                    `;
                     bookSelectionList.appendChild(label);
                 });
             }
