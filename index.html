@@ -459,42 +459,97 @@
                     </div>
                     <div class="space-y-3 mt-6 pt-4 border-t border-gray-200">
                         <h4 class="font-semibold text-gray-800 text-lg">Дополнительные опции</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                        
+                        <!-- Gender Selection Tabs -->
+                        <div class="flex space-x-1 bg-gray-100 p-1 rounded-lg">
+                            <button type="button" id="boy-tab" class="flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors bg-white text-[var(--primary-blue)] shadow-sm">
+                                Для мальчика
+                            </button>
+                            <button type="button" id="girl-tab" class="flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors text-gray-600 hover:text-gray-900">
+                                Для девочки
+                            </button>
+                        </div>
+
+                        <!-- Boy Books (Artem) -->
+                        <div id="boy-books" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                             <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                                <input type="checkbox" name="option" value="school_prep_numbers" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <input type="checkbox" name="option" value="artem_first_class" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
                                 <div class="flex-1">
-                                    <div class="font-medium text-gray-900">Подготовка к школе: Цифры</div>
-                                    <div class="text-sm text-gray-600 mt-1">Изучение чисел от 1 до 10, счет и простые математические понятия</div>
+                                    <div class="font-medium text-gray-900">Артём идёт в первый класс</div>
+                                    <div class="text-sm text-gray-600 mt-1">История о первом школьном дне мальчика, его волнениях и радостных открытиях</div>
                                 </div>
                             </label>
                             <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                                <input type="checkbox" name="option" value="school_prep_alphabet" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <input type="checkbox" name="option" value="artem_lettergrad" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
                                 <div class="flex-1">
-                                    <div class="font-medium text-gray-900">Подготовка к школе: Алфавит</div>
-                                    <div class="text-sm text-gray-600 mt-1">Знакомство с буквами, звуками и первыми словами</div>
+                                    <div class="font-medium text-gray-900">Артём и тайна города Буквограда</div>
+                                    <div class="text-sm text-gray-600 mt-1">Сказочное путешествие в город, где буквы оживают, помогая выучить алфавит</div>
                                 </div>
                             </label>
                             <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                                <input type="checkbox" name="option" value="school_prep_shapes" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <input type="checkbox" name="option" value="captain_artem_math" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
                                 <div class="flex-1">
-                                    <div class="font-medium text-gray-900">Подготовка к школе: Фигуры</div>
-                                    <div class="text-sm text-gray-600 mt-1">Изучение геометрических фигур, форм и пространственного мышления</div>
+                                    <div class="font-medium text-gray-900">Капитан Артём и космическая математика</div>
+                                    <div class="text-sm text-gray-600 mt-1">Космическое приключение, в котором мальчик учится считать, исследуя планеты</div>
                                 </div>
                             </label>
                             <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                                <input type="checkbox" name="option" value="school_prep_colors" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <input type="checkbox" name="option" value="artem_finds_friends" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
                                 <div class="flex-1">
-                                    <div class="font-medium text-gray-900">Подготовка к школе: Цвета</div>
-                                    <div class="text-sm text-gray-600 mt-1">Изучение основных и дополнительных цветов, их сочетаний</div>
+                                    <div class="font-medium text-gray-900">Как Артём нашёл друзей</div>
+                                    <div class="text-sm text-gray-600 mt-1">Добрая история о том, как преодолеть стеснение и найти настоящих друзей в школе</div>
                                 </div>
                             </label>
                             <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                                <input type="checkbox" name="option" value="school_prep_writing" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <input type="checkbox" name="option" value="superhero_notebook" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
                                 <div class="flex-1">
-                                    <div class="font-medium text-gray-900">Подготовка к школе: Письмо</div>
-                                    <div class="text-sm text-gray-600 mt-1">Развитие мелкой моторики, подготовка руки к письму</div>
+                                    <div class="font-medium text-gray-900">Блокнот супергероя Артёма: Тренируем руку</div>
+                                    <div class="text-sm text-gray-600 mt-1">Сборник игровых заданий-миссий для подготовки руки к письму и развития моторики</div>
                                 </div>
                             </label>
+                        </div>
+
+                        <!-- Girl Books (Anya) -->
+                        <div id="girl-books" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 hidden">
+                            <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="option" value="anya_first_class" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <div class="flex-1">
+                                    <div class="font-medium text-gray-900">Аня идёт в первый класс</div>
+                                    <div class="text-sm text-gray-600 mt-1">Добрая история о первом школьном дне девочки, её впечатлениях и новой дружбе</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="option" value="anya_letterland" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <div class="flex-1">
+                                    <div class="font-medium text-gray-900">Аня и волшебная страна Буквляндия</div>
+                                    <div class="text-sm text-gray-600 mt-1">Сказочное приключение в стране живых букв, которое помогает выучить алфавит</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="option" value="princess_anya_math" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <div class="flex-1">
+                                    <div class="font-medium text-gray-900">Принцесса Аня и счёт в Заколдованном лесу</div>
+                                    <div class="text-sm text-gray-600 mt-1">Волшебная история, где девочка учится считать, помогая сказочным жителям леса</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="option" value="anya_finds_friend" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <div class="flex-1">
+                                    <div class="font-medium text-gray-900">Как Аня нашла подружку</div>
+                                    <div class="text-sm text-gray-600 mt-1">Трогательная история о том, как девочка преодолевает стеснение и находит подругу</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+                                <input type="checkbox" name="option" value="designer_notebook" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
+                                <div class="flex-1">
+                                    <div class="font-medium text-gray-900">Альбом дизайнера Ани: Готовим руку к письму</div>
+                                    <div class="text-sm text-gray-600 mt-1">Творческий альбом с заданиями-проектами для подготовки руки к письму и развития моторики</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Custom Option (Always Visible) -->
+                        <div class="pt-4 border-t border-gray-200">
                             <label class="flex items-start space-x-3 cursor-pointer text-gray-700 p-2 rounded-lg hover:bg-gray-50 transition-colors">
                                 <input type="checkbox" name="option" value="custom" id="custom-option-checkbox" class="h-5 w-5 rounded border-gray-300 text-[var(--primary-blue)] focus:ring-[var(--primary-blue)] mt-0.5">
                                 <div class="flex-1">
@@ -503,6 +558,7 @@
                                 </div>
                             </label>
                         </div>
+                        
                         <textarea id="custom-option-input" name="custom_option_text" placeholder="Опишите ваши пожелания..." class="w-full mt-2 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-[var(--primary-blue)] hidden transition"></textarea>
                     </div>
                 </fieldset>
@@ -750,7 +806,46 @@
             bookSelectionList.querySelectorAll('input[type="checkbox"]').forEach(cb => {
                 cb.checked = cb.value === preselectedBookTitle;
             });
+            // Reset to boy tab when opening modal
+            showBoyBooks();
             orderModal.style.display = 'flex';
+        };
+        
+        // Gender tab switching functionality
+        const showBoyBooks = () => {
+            const boyTab = document.getElementById('boy-tab');
+            const girlTab = document.getElementById('girl-tab');
+            const boyBooks = document.getElementById('boy-books');
+            const girlBooks = document.getElementById('girl-books');
+            
+            // Update tab appearance
+            boyTab.className = 'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors bg-white text-[var(--primary-blue)] shadow-sm';
+            girlTab.className = 'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors text-gray-600 hover:text-gray-900';
+            
+            // Show/hide book sections
+            boyBooks.classList.remove('hidden');
+            girlBooks.classList.add('hidden');
+            
+            // Uncheck all girl books when switching to boy books
+            girlBooks.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+        };
+        
+        const showGirlBooks = () => {
+            const boyTab = document.getElementById('boy-tab');
+            const girlTab = document.getElementById('girl-tab');
+            const boyBooks = document.getElementById('boy-books');
+            const girlBooks = document.getElementById('girl-books');
+            
+            // Update tab appearance
+            girlTab.className = 'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors bg-white text-[var(--primary-blue)] shadow-sm';
+            boyTab.className = 'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors text-gray-600 hover:text-gray-900';
+            
+            // Show/hide book sections
+            girlBooks.classList.remove('hidden');
+            boyBooks.classList.add('hidden');
+            
+            // Uncheck all boy books when switching to girl books
+            boyBooks.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
         };
         const closeModal = () => { orderModal.style.display = 'none'; };
 
@@ -810,11 +905,16 @@
 
             if (selectedOptions.length > 0) {
                 selectedOptions.forEach(opt => {
-                    if (opt === 'school_prep_numbers') message += '- Подготовка к школе: Цифры\n';
-                    if (opt === 'school_prep_alphabet') message += '- Подготовка к школе: Алфавит\n';
-                    if (opt === 'school_prep_shapes') message += '- Подготовка к школе: Фигуры\n';
-                    if (opt === 'school_prep_colors') message += '- Подготовка к школе: Цвета\n';
-                    if (opt === 'school_prep_writing') message += '- Подготовка к школе: Письмо\n';
+                    if (opt === 'artem_first_class') message += '- Артём идёт в первый класс\n';
+                    if (opt === 'artem_lettergrad') message += '- Артём и тайна города Буквограда\n';
+                    if (opt === 'captain_artem_math') message += '- Капитан Артём и космическая математика\n';
+                    if (opt === 'artem_finds_friends') message += '- Как Артём нашёл друзей\n';
+                    if (opt === 'superhero_notebook') message += '- Блокнот супергероя Артёма: Тренируем руку\n';
+                    if (opt === 'anya_first_class') message += '- Аня идёт в первый класс\n';
+                    if (opt === 'anya_letterland') message += '- Аня и волшебная страна Буквляндия\n';
+                    if (opt === 'princess_anya_math') message += '- Принцесса Аня и счёт в Заколдованном лесу\n';
+                    if (opt === 'anya_finds_friend') message += '- Как Аня нашла подружку\n';
+                    if (opt === 'designer_notebook') message += '- Альбом дизайнера Ани: Готовим руку к письму\n';
                     if (opt === 'custom') {
                         const customText = formData.get('custom_option_text');
                         message += `- Свой вариант: ${customText || 'Не указано'}\n`;
@@ -909,6 +1009,10 @@
             document.querySelector('.privacy-modal-close').addEventListener('click', closePrivacyModal);
             customOptionCheckbox.addEventListener('change', () => customOptionInput.classList.toggle('hidden', !customOptionCheckbox.checked));
             orderForm.addEventListener('submit', handleFormSubmit);
+            
+            // Gender tab event listeners
+            document.getElementById('boy-tab').addEventListener('click', showBoyBooks);
+            document.getElementById('girl-tab').addEventListener('click', showGirlBooks);
 
             // Close modals when clicking outside
             window.addEventListener('click', (e) => {
